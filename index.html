@@ -1,51 +1,103 @@
+
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>My Portfolio | Alken.Dev</title>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <style type="text/tailwindcss">
         @custom-variant dark (&:where(.dark, .dark *));
 
-@layer components {
-.btn-primary {
-@apply px-6 py-3 bg-green-800 text-white hover:bg-orange-400 transition-colors dark:bg-slate-700;
-}
-}
-</style>
+        @layer components {
+            .btn-primary {
+                @apply px-6 py-3 bg-green-700 text-white
+                rounded-xl font-semibold shadow-md
+                hover:bg-green-500 hover:-translate-y-1
+                hover:shadow-lg transition-all duration-300;
+            }
+
+            .nav-link {
+                @apply font-semibold px-4 py-2 rounded-lg
+                hover:bg-green-100 hover:text-green-700
+                dark:hover:bg-slate-700 dark:hover:text-green-400
+                transition-colors duration-300;
+            }
+
+            .info-card {
+                @apply flex-1 min-w-[280px] rounded-xl
+                border border-slate-300 p-6 shadow-md
+                transition-all duration-300
+                hover:-translate-y-2 hover:shadow-xl
+                dark:border-slate-700 dark:bg-slate-800
+                dark:text-white max-[600px]:min-w-0;
+            }
+        }
+    </style>
 </head>
 
-<body class="text-center dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
-    
-     <header>
-       <section class="max-w-6xl mx-auto px-6 py-16 text-center">
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white
+             transition-colors duration-300">
+    <nav class="sticky top-0 z-50 flex justify-between items-center
+                gap-4 px-8 py-4 bg-white dark:bg-slate-900 shadow-md
+                max-[600px]:flex-col">
+
+        <a href="#home"
+           class="text-xl font-bold text-green-600 dark:text-green-400">
+            Alken.Dev
+        </a>
+
+        <ul class="flex flex-wrap justify-center gap-3 list-none">
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#contact" class="nav-link">Contact Me</a></li>
+        </ul>
+
+        <div class="flex flex-wrap justify-center gap-3">
+            <button id="toggledark"
+                    type="button"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                    class="rounded-xl border border-slate-300
+                           bg-slate-100 px-4 py-2 font-medium
+                           text-slate-800 transition-colors
+                           hover:bg-green-100 hover:text-green-800
+                           dark:border-slate-600 dark:bg-slate-800
+                           dark:text-white">
+                Toggle Dark
+            </button>
+
+            <button id="replayTimeline"
+                    type="button"
+                    class="btn-primary">
+                Replay
+            </button>
+        </div>
+    </nav>
+
+    <header id="home" class="max-w-6xl mx-auto px-6 py-16 text-center">
         <h1 class="text-4xl sm:text-5xl font-bold mb-4">
-Hello, I'm <span class="text-green-600 dark:text-green-400">Alken John Flores</span>
-</h1>
-    <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-    Web Developer • System Builder • AI Automation
-    </p>
-</section>
-        <nav class="flex justify-between items-center mx-[50px] max-[600px]:flex-col">
-            
-            <ul class="flex gap-5 list-none max-[600px]:flex-col">
-                <li><a href="#projects" class="hover:text-red-500">Projects</a></li>
-                <li><a href="#services" class="hover:text-red-300">Services</a></li>
-                <li><a href="#contact" class="hover:text-red-200">Contact Me</a></li>
-            </ul>
-        </nav>
+           Hi, I'm
+            <span class="text-green-600 dark:text-green-400">
+             Alken John Flores
+            </span>
+        </h1>
+
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Web Developer • System Builder • AI Automation
+        </p>
     </header>
 
-    <main class=" btn-primary flex flex-wrap gap-[30px] p-[50px] m-[50px] max-[600px]:p-[15px]
+   <main class=" btn-primary flex flex-wrap gap-[30px] p-[50px] m-[50px] max-[600px]:p-[15px]
      max-[600px]:m-[10px]">
-        <!-- Projects -->
-         
+
         <section id="projects" class="flex-1 min-w-[280px] border-2 border-black p-5 
         bg-blue-400 max-[600px]:min-w-0">
             <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
-                My Projects
+                Projects
             </h2>
             <p>
                 Personal portfolio, payroll system, company website,startup website, and compliance monitoring system.
@@ -55,14 +107,13 @@ Hello, I'm <span class="text-green-600 dark:text-green-400">Alken John Flores</s
         <section id="services" class="flex-1 min-w-[280px] border-2 border-black p-5 
         bg-red-500 max-[600px]:min-w-0">
             <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
-                My Services
+                Services
             </h2>
             <p>
                 Website Creation, System Creation, AI Automation,Database Management, Project Management, Systems
                 Analyst
             </p>
         </section>
-        <!-- Contact -->
         <section id="contact" class="flex-1 min-w-[280px] border-2 border-black p-5 
         bg-purple-500 max-[600px]:min-w-0">
             <h2 class="max-[768px]:text-[48px] max-[768px]:text-blue-500">
@@ -82,27 +133,188 @@ Hello, I'm <span class="text-green-600 dark:text-green-400">Alken John Flores</s
             </form>
         </section>
     </main>
-    <button id="switch"
-        class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-red-600">Switch</button>
-    <button id="toggledark"
-        class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-red-600">Toggledark</button>
 
-    <button id="btn-primay"
-        class="bg-black text-white p-(12px) rounded-[10px] transition-colors duration-500 ease-in-out hover:bg-red-600">Btn</button>
-    <script src="script.js"></script>
-    <script>
-        const toggleDarkButton = document.querySelector('#toggledark');
-        const html = document.querySelector('html');
 
-        toggleDarkButton.addEventListener('click', function () {
-            html.classList.toggle('dark');
+    <footer class="mt-10 border-t border-slate-300
+                   dark:border-slate-700 p-6 text-center
+                   text-slate-500 dark:text-slate-400">
+        <p>&copy; Alken John Flores</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script>console.log("Gsap version:", gsap.version);
+       
+        const html = document.documentElement;
+        const toggleDarkButton = document.querySelector("#toggledark");
+        const replayButton = document.querySelector("#replayTimeline");
+
+        toggleDarkButton.addEventListener("click", function () {
+            html.classList.toggle("dark");
+
+            const isDark = html.classList.contains("dark");
+
+            toggleDarkButton.setAttribute(
+                "aria-pressed",
+                String(isDark)
+            );
+
+            gsap.to(toggleDarkButton, {
+                rotation: "+=360",
+                duration: 0.6,
+                ease: "power2.out"
+            });
         });
+
+        const tl = gsap.timeline({
+    paused: true,
+    defaults: {
+        duration: 0.8,
+        ease: "power3.out"
+    }
+});
+
+
+tl.from("#home h1", {
+    y: -60,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1.2,
+    ease: "elastic.out(1, 0.5)"
+})
+
+
+.from("#home p", {
+    y: 25,
+    opacity: 0,
+    duration: 0.8
+}, "-=0.6")
+
+
+.from("nav ul li", {
+    y: -25,
+    opacity: 0,
+    stagger: 0.15
+}, "-=0.4")
+
+
+.from("#projects", {
+    x: -100,
+    rotationY: -15,
+    opacity: 0,
+    scale: 0.85,
+    duration: 1
+}, "-=0.2")
+
+
+.from("#services", {
+    y: 100,
+    rotationX: 15,
+    opacity: 0,
+    scale: 0.85,
+    duration: 1
+}, "-=0.65")
+
+
+.from("#contact", {
+    x: 100,
+    rotationY: 15,
+    opacity: 0,
+    scale: 0.85,
+    duration: 1
+}, "-=0.65")
+
+
+.from("#projects h2, #services h2, #contact h2", {
+    y: 20,
+    opacity: 0,
+    stagger: 0.15,
+    duration: 0.5
+}, "-=0.3")
+
+
+.from("#projects p, #services p, #contact form > *", {
+    y: 15,
+    opacity: 0,
+    stagger: 0.08,
+    duration: 0.4
+}, "-=0.2");
+
+
+tl.play();
+
+
+document.querySelector("#replayTimeline")
+    .addEventListener("click", () => {
+        tl.restart();
+    });
+
+
+const cards = gsap.utils.toArray(
+    "#projects, #services, #contact"
+);
+
+cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+            y: -10,
+            scale: 1.02,
+            boxShadow: "0px 20px 35px rgba(0,0,0,0.2)",
+            duration: 0.5,
+            ease: "power2.out"
+        });
+    });
+
+    card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+            y: 0,
+            scale: 1,
+            boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
+            duration: 0.5,
+            ease: "power2.out"
+        });
+    });
+});
+
+gsap.utils.toArray(
+    "#contact input, #contact textarea"
+).forEach((field) => {
+    field.addEventListener("focus", () => {
+        gsap.to(field, {
+            scale: 1.02,
+            borderColor: "#16a34a",
+            duration: 0.25
+        });
+    });
+
+    field.addEventListener("blur", () => {
+        gsap.to(field, {
+            scale: 1,
+            duration: 0.25
+        });
+    });
+});
+
+// Animate the Send Message button on hover
+const sendButton = document.querySelector(
+    '#contact button[type="submit"]'
+);
+
+sendButton.addEventListener("mouseenter", () => {
+    gsap.to(sendButton, {
+        scale: 1.05,
+        rotation: -1,
+        duration: 0.2
+    });
+});
+
+sendButton.addEventListener("mouseleave", () => {
+    gsap.to(sendButton, {
+        scale: 1,
+        rotation: 0,
+        duration: 0.2
+    });
+});
     </script>
 
 </body>
-<footer class="mt-10 border-t
-               border-slate-700 p-6
-               text-center text-slate-400">
-  <p>&copy; Alken John Flores</p>
-</footer>
 </html>
